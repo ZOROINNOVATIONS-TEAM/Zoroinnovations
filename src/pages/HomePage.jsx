@@ -7,12 +7,12 @@ import {
 // If you change gradient colours, remember to include the classes in `safelist` in tailwind.config.js when using JIT
 export default function HomePage() {
   return (
-    <main className="w-full text-gray-100 font-['Inter',sans-serif]">
+    <main className="w-full text-gray-100 font-['Inter',sans-serif] filter brightness-95">
       {/* HERO */}
-      <section className="relative bg-gradient-to-br from-blue-700 via-blue-600 to-orange-500 overflow-hidden">
-        <div className="relative z-10 container mx-auto flex flex-col md:flex-row items-center gap-10 py-20 px-6">
+      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-orange-500 overflow-hidden">
+        <div className="relative z-10 container mx-auto flex flex-col md:flex-row items-center gap-10 py-10 px-6">
           <div className="flex-1 space-y-6">
-            <img src="/logo.svg" alt="Zoro Innovations" className="h-12" />
+            <img src="/ho-icon.png" alt="Zoro Innovations" className="w-[374px] h-[154px]"/>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
               Transforming World <br className="hidden sm:block" />
               with <span className="text-orange-400">Intelligent Code</span>
@@ -31,7 +31,7 @@ export default function HomePage() {
             </div>
           </div>
           {/* Image */}
-          <div className="flex-1 max-w-md md:max-w-none">
+          <div className="flex-1 max-w-md md:max-w-none filter brightness-90">
             <img
               src="/brain.jpg"
               alt="AI Brain"
@@ -39,12 +39,11 @@ export default function HomePage() {
             />
           </div>
         </div>
-        {/* Subtle pattern overlay (optional) */}
+        {/* Subtle pattern overlay*/}
         <div className="pointer-events-none absolute inset-0 bg-[url('/sphere.png')] bg-cover bg-center opacity-10" />
       </section>
-
       {/* RELENTLESS INNOVATION */}
-      <section className="bg-blue-800 py-16 px-6">
+      <section className="bg-blue-800 py-16 px-6 filter brightness-90">
         <h2 className="text-3xl font-bold text-center mb-2">Zoro: Relentless Innovation</h2>
          <h6 className="text-center text-sm font-extralight text-gray-200 mb-12">Delivering excellence through innovation and dedication</h6>
         <div className="container mx-auto grid gap-8 md:grid-cols-3">
@@ -67,7 +66,7 @@ export default function HomePage() {
       </section>
       {/* WE IMAGINE */}
       <GradientBlock
-        gradient="from-blue-700 to-blue-600"
+        gradient="from-blue-900 to-blue-800 filter brightness-95"
         title="We imagine."
         features={[
           {
@@ -87,10 +86,9 @@ export default function HomePage() {
           },
         ]}
       />
-
       {/* WE ENGINEER */}
       <GradientBlock
-        gradient="from-red-600 to-orange-500"
+        gradient="from-red-500 to-orange-400 filter brightness-90"
         title="We engineer."
         features={[
           {
@@ -112,7 +110,7 @@ export default function HomePage() {
       />
       {/* WE MODERNIZE */}
       <GradientBlock
-        gradient="from-green-600 to-green-500"
+        gradient="from-green-600 to-green-700 filter brightness-95"
         title="We modernize."
         features={[
           {
@@ -134,7 +132,7 @@ export default function HomePage() {
       />
       {/* WE MANAGE */}
       <GradientBlock
-        gradient="from-purple-700 to-purple-500"
+        gradient="from-purple-700 to-purple-900 filter brightness-90"
         title="We manage."
         features={[
           {
@@ -156,7 +154,7 @@ export default function HomePage() {
       />
 
       {/* CLIENT TRUST */}
-     <section className="bg-white text-gray-900 py-16 px-6">
+     <section className="bg-white text-gray-900 py-16 px-6 filter brightness-95">
         <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-bold mb-2">
             Our mission: Complete client success
@@ -176,7 +174,7 @@ export default function HomePage() {
       </section>
 
       {/* INDUSTRY EXPERTISE */}
-      <section className="bg-gray-50 text-gray-900 py-16 px-6">
+      <section className="bg-white filter brightness-95 text-gray-900 py-16 px-6">
         <div className="container mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-2">Our Industry Expertise and Solutions</h2>
           <p className="text-gray-600 mb-12">Specialized solutions across diverse industries</p>
