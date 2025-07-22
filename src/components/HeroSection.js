@@ -6,7 +6,6 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Content */}
         <div className="text-center md:text-left max-w-xl">
-          <img src="/images/zorologo.png" alt="Zoro Logo" className="w-[300px] h-auto mx-auto md:mx-0" />
           
           <h1 className="text-[42px] md:text-[55px] font-bold mb-4 mt-10 leading-tight">
             Transforming World <br/> with <span className="text-orange-500">Intelligent Code</span>
