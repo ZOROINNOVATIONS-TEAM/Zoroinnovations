@@ -23,7 +23,7 @@ function Header() {
         <a href="#projects" className="hover:text-orange-400">Projects</a>
         <a href="#blog" className="hover:text-orange-400">Blog</a>
         <a href="#careers" className="hover:text-orange-400">Careers</a>
-        <button className="border-2 border-orange-300 hover:bg-orange-600 hover:text-white focus:bg-orange-600 text-orange-500 font-bold py-3 px-6 rounded">
+        <button className="border-2 border-orange-300 bg-orange-300 text-gray-700 hover:bg-orange-600 hover:text-white focus:bg-orange-600 py-1 px-2 rounded">
               Contact Us
             </button>
       </nav>
