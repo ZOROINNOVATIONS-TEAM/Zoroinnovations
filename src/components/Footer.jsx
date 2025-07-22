@@ -1,57 +1,65 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Footer = () => {
+function Footer() {
   return (
-    <footer className="bg-[#111827] text-white pt-10 text-base">
-      <div className="flex flex-wrap justify-between items-start max-w-6xl mx-auto px-8">
-        <div className="flex-1 min-w-[250px] mr-10 mb-8">
-          <img src="/ZORO_logo.png" alt="ZORO Logo" className="w-[90px] mb-4" />
-          <p>Transforming businesses through innovative AI solutions and cutting-edge technology.</p>
-          <div className="mt-4 flex space-x-3">
-            <a href="#" className="hover:text-blue-400"><i className="fab fa-linkedin-in"></i></a>
-            <a href="#" className="hover:text-blue-400"><i className="fab fa-twitter"></i></a>
-            <a href="#" className="hover:text-blue-400"><i className="fab fa-facebook-f"></i></a>
+    <footer className="text-white py-16" style={{ background: '#0B1623' }}>
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div>
+            <img src="/zoro_logo_white.png" alt="ZORO INNOVATIONS logo" className="h-10 w-auto mb-4" />
+            <p className="text-gray-400 mb-4">
+              Transforming businesses through innovative AI solutions and cutting-edge technology.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" className="h-5 w-5 filter invert" /></a>
+              <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" className="h-5 w-5 filter invert" /></a>
+              <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" className="h-5 w-5 filter invert" /></a>
+            </div>
+          </div>
+          {/* Services */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li><a href="#" className="hover:text-white transition-colors">Web Development</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Custom Software</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">AI Applications</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">IT Consulting</a></li>
+            </ul>
+          </div>
+          {/* Company */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Our Team</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li>contact@company.com</li>
+              <li>+1 (555) 123-4567</li>
+              <li>123 Innovation Drive</li>
+              <li>Tech City, TC 12345</li>
+            </ul>
           </div>
         </div>
-        <div className="flex flex-1 justify-between gap-10 flex-wrap min-w-[300px]">
-          <div>
-            <h4 className="mb-3 font-semibold">Services</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li>Web Development</li>
-              <li>Custom Software</li>
-              <li>AI Applications</li>
-              <li>IT Consulting</li>
-            </ul>
+        {/* Footer Bottom */}
+        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center" style={{ background: '#0B1623' }}>
+          <p className="text-gray-400 text-sm">© 2025 Zoro Innovations. All rights reserved.</p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
           </div>
-          <div>
-            <h4 className="mb-3 font-semibold">Company</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li>About Us</li>
-              <li>Our Employee</li>
-              <li>Careers & Certs</li>
-              <li>Contact</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="mb-3 font-semibold">Resources</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li>Blog</li>
-              <li>Case Studies</li>
-              <li>Documentation</li>
-              <li>Support</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-[#222c3c] mt-8 py-4 px-8 flex flex-col md:flex-row justify-between items-center text-sm bg-[#111827]">
-        <span className="mb-2 md:mb-0">© 2023 Zoro Innovations. All rights reserved.</span>
-        <div>
-          <a href="#" className="text-gray-400 hover:text-white ml-2">Privacy Policy</a> |
-          <a href="#" className="text-gray-400 hover:text-white ml-2">Terms of Service</a>
         </div>
       </div>
     </footer>
   );
-};
+}
 
-export default Footer; 
+export default Footer;
