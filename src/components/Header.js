@@ -7,7 +7,7 @@ function Header() {
     <header className="bg-white text-gray-700 p-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
       {/* Logo */}
       <div className="flex items-center">
-        <img src="/images/zorologo.png" alt="Logo" className="ml-4 md:ml-28 h-9" />
+        <img src="/images/zoro logo.png" alt="Logo" className="ml-4 md:ml-28 h-9" />
       </div>
 
       {/* Desktop Nav */}
@@ -23,7 +23,9 @@ function Header() {
         <a href="#projects" className="hover:text-orange-400">Projects</a>
         <a href="#blog" className="hover:text-orange-400">Blog</a>
         <a href="#careers" className="hover:text-orange-400">Careers</a>
-        <a href="#contact" className="hover:text-orange-400">Contact</a>
+        <button className="border-2 border-orange-300 hover:bg-orange-600 hover:text-white focus:bg-orange-600 text-orange-500 font-bold py-3 px-6 rounded">
+              Contact Us
+            </button>
       </nav>
 
       {/* Mobile Menu Button */}
