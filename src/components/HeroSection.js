@@ -29,13 +29,16 @@ const HeroSection = () => {
         </div>
 
         {/* Right Image */}
-        <div className="flex justify-center mt-10 md:mt-0">
-          <img
-            src="/images/AI Technology.png"
-            alt="AI Illustration"
-            className="w-[300px] md:w-[500px] lg:w-[584px] rounded-2xl transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-2"
-          />
-        </div>
+         <div className="flex justify-center mt-10 md:mt-0">
+      <div className="relative w-[300px] md:w-[500px] lg:w-[584px]  transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-2">
+        <img
+          src="/images/HomePage.jpg"
+          alt="AI Illustration"
+          className="w-full rounded-2xl animate-gradient-pulse"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/80 via-blue-300/40 to-orange-500/80 rounded-2xl transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-2"></div>
+      </div>
+    </div>
       </div>
     </section>
   );
