@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import Header from './pages/Header'
-import { Verification } from './pages/Verification'
+import  EmployeeVer from './pages/EmployeeVer.jsx'
 
 function App() {
   return (
     <>
     <Header/>
     <Routes>
-       <Route path="/" element={<Verification/>} />
+       <Route path="/" element={<EmployeeVer/>} />
     </Routes>
     </>
   )
