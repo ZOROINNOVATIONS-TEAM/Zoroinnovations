@@ -15,8 +15,7 @@ const Navigation = () => {
           <a href="#" className="nav-link">Projects</a>
           <a href="#" className="nav-link">Blog</a>
           <a href="#" className="nav-link">Careers</a>
-          <a href="#" className="nav-link">Verify ID</a>
-          <a href="#" className="nav-link">Contact</a>
+          <a href="#" className="nav-link contact-link">Contact</a>
         </div>
       </div>
     </nav>

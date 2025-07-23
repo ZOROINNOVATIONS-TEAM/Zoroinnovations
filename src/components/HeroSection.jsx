@@ -1,5 +1,5 @@
 import React from 'react';
-
+import zoroLogo from '../assets/black_zoro_tm_logo.png';
 const HeroSection = () => {
   return (
     <section className="hero-section">
@@ -37,7 +37,7 @@ const HeroSection = () => {
           </div>
           <div className="hero-right">
             <div className="hero-logo">
-              <img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=400&h=300" alt="Zoro Innovations Logo" className="hero-logo-img" />
+              <img src={zoroLogo} alt="Zoro Innovations" className="hero-logo-img" />
             </div>
           </div>
         </div>

@@ -73,7 +73,12 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #f97316 100%);
+  background: linear-gradient(135deg,
+  #002366 0%,      /* Navy Blue (Top Left) */
+  #0f3cc9 30%,     /* Royal Blue */
+  #4b4ae3 50%,     /* Purplish Blue */
+  #ff6b35 100%     /* Bright Orange (Bottom Right) */
+);
   padding: 100px 0;
   width: 100vw;
   margin: 0;
@@ -83,7 +88,7 @@ body {
 }
 
 .hero-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
@@ -150,7 +155,7 @@ body {
 
 .btn-watch {
   background: white;
-  color: #4f46e5;
+  color: #1e3a8a;
   border: none;
   padding: 16px 32px;
   border-radius: 8px;
@@ -170,14 +175,22 @@ body {
 
 .hero-right {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
 .hero-logo-img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
   height: auto;
   border-radius: 12px;
+}
+
+.hero-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 /* Services Section */
@@ -784,7 +797,7 @@ body {
 
 /* Footer */
 .footer {
-  background: #2c3e50;
+  background: #111827;
   color: white;
   padding: 60px 0 20px;
   width: 100vw;
@@ -811,7 +824,7 @@ body {
 
 
 .footer-logo {
-  height: 40px;
+  height: 80px;
   object-fit: contain;
 }
 

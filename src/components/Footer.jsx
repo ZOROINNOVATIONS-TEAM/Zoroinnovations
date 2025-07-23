@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '../assets/zoroLogo.png';
+import logoImg from '../assets/black_zoro_tm_logo.png';
 import linkedinIcon from '../assets/linkedin.svg';
 import twitterIcon from '../assets/twitter.svg';
 import facebookIcon from '../assets/facebook.svg';
