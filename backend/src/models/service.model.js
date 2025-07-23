@@ -1,3 +1,4 @@
+// src/models/service.model.js
 import mongoose, { Schema } from "mongoose";
 
 const serviceSchema = new Schema(
@@ -20,21 +21,17 @@ const serviceSchema = new Schema(
       type: String,
       default: "https://via.placeholder.com/200x200.png",
       trim: true,
+      validate: {
+        validator: (v) => /^https?:\/\/.+/.test(v),
+        message: "Icon URL must be a valid URL",
+      },
     },
     category: {
       type: String,
       required: [true, "Category is required"],
       trim: true,
       enum: {
-        values: [
-          "Web Development",
-          "Mobile Development",
-          "Graphic Design",
-          "Digital Marketing",
-          "Writing",
-          "Consulting",
-          "Other",
-        ],
+        values: ["Development", "AI/ML", "Infrastructure", "Consulting"],
         message: "{VALUE} is not a valid category",
       },
     },
@@ -88,6 +85,10 @@ const serviceSchema = new Schema(
       lowercase: true,
       trim: true,
       index: true,
+      validate: {
+        validator: (v) => /^[a-z0-9-]+$/i.test(v),
+        message: "Slug must be URL-friendly (alphanumeric and hyphens only)",
+      },
     },
     detailedDescription: {
       type: String,
