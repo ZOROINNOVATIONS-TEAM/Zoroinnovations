@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeroSection = () => {
   return (
-    <section className="bg-gradient-to-br from-[#1E3A8A] via-[#3B82F6] to-[#FF6B35] text-white py-20 px-6">
+    <section className="bg-gradient-to-br from-blue-950 via-blue-800 to-orange-500 text-white py-20 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Content */}
         <div className="text-center md:text-left max-w-xl">
