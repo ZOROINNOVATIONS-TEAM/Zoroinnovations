@@ -45,8 +45,7 @@ export default function EmployeeVer() {
 
   return (
     <div className="bg-gradient-to-br from-[#0047ab] via-[#5d6bd9] to-[#ff7e5f] p-6 min-h-screen">
-      <div className="bg-white rounded-xl shadow-lg p-3 w-full max-w-6xl mx-auto text-sm mt-6">
-
+      <div className="bg-white rounded-xl shadow-lg p-3 w-full max-w-6xl mx-auto text-sm mt-17">
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold p-1">Employee Verification Records</h2>
@@ -54,10 +53,10 @@ export default function EmployeeVer() {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto border rounded-xl">
+        <div className="overflow-x-auto border-2 rounded-xl">
           <table className="w-full text-left text-sm">
             <thead className="bg-[#f5f5f5]">
-              <tr>
+              <tr className="border-b-1">
                 <th className="p-2">Employee ID</th>
                 <th className="p-1">Full Name</th>
                 <th className="p-1">Department</th>
