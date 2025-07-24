@@ -73,12 +73,15 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(135deg,
-  #002366 0%,      /* Navy Blue (Top Left) */
-  #0f3cc9 30%,     /* Royal Blue */
-  #4b4ae3 50%,     /* Purplish Blue */
-  #ff6b35 100%     /* Bright Orange (Bottom Right) */
-);
+  background: linear-gradient(
+    135deg,
+    #2544a5 0%,      /* Lighter Navy Blue */
+    #4a63d9 30%,     /* Lighter Royal Blue */
+    #7c7be9 50%,     /* Lighter Purplish Blue */
+    #ff9b66 100%     /* Softer Orange */
+  );
+
+
   padding: 100px 0;
   width: 100vw;
   margin: 0;
@@ -646,10 +649,32 @@ body {
   margin: 0;
 }
 
+
 .contact-form {
   background: #f8f9fa;
   padding: 32px;
   border-radius: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: #ffffff;         /* Lighter input background */
+  border: 1px solid #ced4da;         /* Light grey border */
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  color: #212529;
+  width: 100%;
+  margin-bottom: 16px;
+  box-shadow: none;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #80bdff;             /* Light blue border on focus */
+  background-color: #fefefe;         /* Slightly lighter on focus */
 }
 
 .form-row {
@@ -670,21 +695,7 @@ body {
   margin-bottom: 8px;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
 
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #1976d2;
-}
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
