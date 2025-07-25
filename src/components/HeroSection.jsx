@@ -1,5 +1,5 @@
 import React from 'react';
-import zoroLogo from '../assets/black_zoro_tm_logo.png';
+import zoroLogo from '../assets/zoro_white_tm_logo.png';
 const HeroSection = () => {
   return (
     <section className="hero-section">
