@@ -15,7 +15,7 @@ const Navbar = () => {
               <img src={logo} alt='company logo' className='w-24' />
           {/* <div className=''> */}
               <ul className='flex gap-6 text-sm font-medium items-center text-gray-700'>
-                  <li><Link to='/dashboard' className='text-orange-500'>Dashboard</Link></li>
+                  <li><Link to='/' className='text-orange-500'>Dashboard</Link></li>
                   <li><Link to='/career'>Career</Link></li>
                   <li><Link to='/team'>Team</Link></li>
                   <li><Link to='/blog'>Blog</Link></li>

@@ -7,7 +7,7 @@ import facebookLogo from "../assets/facebook.svg";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0B0F19] text-white py-12 px-20 md:px-20 relative">
+    <footer className="bg-[#0B0F19] text-white py-10 px-20 md:px-20 relative">
       {/* Background Image if needed */}
       {/* <div className="absolute inset-0 opacity-10 bg-cover bg-no-repeat bg-center" style={{ backgroundImage: "url('/path-to-background-image.jpg')" }}></div> */}
 
@@ -87,7 +87,7 @@ const Footer = () => {
       </div>
 
       {/* Divider */}
-      <div className="my-8 border-t border-gray-700"></div>
+      <div className="my-6 border-t border-gray-700"></div>
 
       {/* Bottom Footer */}
       <div className="relative z-10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">

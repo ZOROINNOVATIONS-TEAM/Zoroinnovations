@@ -8,8 +8,8 @@ import LineGraph from '../components/LineGraph'
 const Dashboard = () => {
   return (
       <div className='min-h-screen flex flex-col'>
-        <Navbar />
-        <main className='flex-grow bg-gradient-to-br from-blue-800 via-blue-600 to-orange-600 text-white p-18'>
+        {/* <Navbar /> */}
+        <main className='flex-grow bg-gradient-to-br from-[#1E3A8A] via-[#3B82F6] to-[#FF6B35] text-white p-18'>
             <h1 className='text-3xl font-bold mb-2'>Dashboard</h1>
             <p className='text-md text-gray-100 mb-8'>Welcome back, Alex! Here's an overview of your system performance.</p>
 
@@ -60,7 +60,7 @@ const Dashboard = () => {
           </div>
           </div>
         </main>
-        <Footer />
+        {/* <Footer /> */}
     </div>
   )
 }
