@@ -1,96 +1,78 @@
-import Mailgen from "mailgen";
-import nodemailer from "nodemailer";
+// src/utils/mail.js
+import nodemailer from 'nodemailer';
+import Mailgen from 'mailgen';
 
-/**
- *
- * @param {{email: string; subject: string; mailgenContent: Mailgen.Content; }} options
- */
-const sendEmail = async (options) => {
+const transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
+  secure: process.env.EMAIL_PORT == 465, // true for 465, false for other ports
+  auth: {
+    user: process.env.EMAIL_USERNAME,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
 
-  const mailGenerator = new Mailgen({
-    theme: "default",
-    product: {
-      name: "Zoro Innovations",
-      link: "https://taskmanager.app",
-    },
-  });
+const mailGenerator = new Mailgen({
+  theme: 'default',
+  product: {
+    name: 'Zoro Services & Solutions',
+    link: process.env.CLIENT_URL,
+  },
+});
 
-
-  const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent);
-
-  const emailHtml = mailGenerator.generate(options.mailgenContent);
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.MAILTRAP_SMTP_HOST,
-    port: process.env.MAILTRAP_SMTP_PORT,
-    auth: {
-      user: process.env.MAILTRAP_SMTP_USER,
-      pass: process.env.MAILTRAP_SMTP_PASS,
-    },
-  });
-
-  const mail = {
-    from: "mail.taskmanager@example.com", 
-    to: options.email, 
-    subject: options.subject, 
-    text: emailTextual, 
-    html: emailHtml, 
-  };
-
+const sendEmail = async ({ email, subject, mailgenContent }) => {
   try {
+    const emailBody = mailGenerator.generate(mailgenContent);
+    const emailText = mailGenerator.generatePlaintext(mailgenContent);
+
+    const mail = {
+      from: process.env.EMAIL_FROM || 'no-reply@zoro-services.com',
+      to: email,
+      subject,
+      html: emailBody,
+      text: emailText,
+    };
+
     await transporter.sendMail(mail);
   } catch (error) {
-   
-    console.error(
-      "Email service failed silently. Make sure you have provided your MAILTRAP credentials in the .env file",
-    );
-    console.error("Error: ", error);
+    throw new Error(`Failed to send email: ${error.message}`);
   }
 };
 
-const emailVerificationMailgenContent = (username, verificationUrl) => {
+const emailVerificationMailgenContent = (username, verificationLink) => {
   return {
     body: {
       name: username,
-      intro: "Welcome to Zoro! We're very excited to have you on board.",
+      intro: 'Please verify your email address to complete your registration.',
       action: {
-        instructions:
-          "To verify your email please click on the following button:",
+        instructions: 'Click the button below to verify your email:',
         button: {
-          color: "#22BC66", // Optional action button color
-          text: "Verify your email",
-          link: verificationUrl,
+          color: '#22BC66',
+          text: 'Verify Email',
+          link: verificationLink,
         },
       },
-      outro:
-        "Need help, or have questions? Just reply to this email, we'd love to help.",
+      outro: 'If you did not request this, please ignore this email.',
     },
   };
 };
 
-
-const forgotPasswordMailgenContent = (username, passwordResetUrl) => {
+const forgotPasswordMailgenContent = (username, resetLink) => {
   return {
     body: {
       name: username,
-      intro: "We got a request to reset the password of our account",
+      intro: 'You have requested to reset your password.',
       action: {
-        instructions:
-          "To reset your password click on the following button or link:",
+        instructions: 'Click the button below to reset your password:',
         button: {
-          color: "#22BC66", // Optional action button color
-          text: "Reset password",
-          link: passwordResetUrl,
+          color: '#DC4D2F',
+          text: 'Reset Password',
+          link: resetLink,
         },
       },
-      outro:
-        "Need help, or have questions? Just reply to this email, we'd love to help.",
+      outro: 'If you did not request a password reset, please ignore this email.',
     },
   };
 };
 
-export {
-  emailVerificationMailgenContent,
-  forgotPasswordMailgenContent,
-  sendEmail,
-};
+export { sendEmail, emailVerificationMailgenContent, forgotPasswordMailgenContent };
