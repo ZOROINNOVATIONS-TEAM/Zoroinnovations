@@ -3,6 +3,7 @@ import { Routes, Route} from 'react-router-dom'
 import  EmployeeVer from './pages/EmployeeVer.jsx'
 import Header from './pages/Header.jsx'
 import Footer from './pages/Footer.jsx'
+import Locations from './pages/Location.jsx'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
     <Header/>
     <Routes>
        <Route path="/" element={<EmployeeVer/>} />
+       <Route path="/address" element={<Locations/>} />
     </Routes>
       <Footer/>
     </>
