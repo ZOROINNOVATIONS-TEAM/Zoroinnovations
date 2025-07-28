@@ -1,78 +1,88 @@
-// src/utils/mail.js
-import nodemailer from 'nodemailer';
-import Mailgen from 'mailgen';
+import Mailgen from "mailgen";
+import nodemailer from "nodemailer";
 
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST,
-  port: process.env.EMAIL_PORT,
-  secure: process.env.EMAIL_PORT == 465, // true for 465, false for other ports
-  auth: {
-    user: process.env.EMAIL_USERNAME,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-});
+/**
+ * @param {{email: string; subject: string; mailgenContent: Mailgen.Content; }} options
+ */
+const sendEmail = async (options) => {
+  const mailGenerator = new Mailgen({
+    theme: "default",
+    product: {
+      name: "Zoro Innovations",
+      link: process.env.CLIENT_URL || "http://localhost:3000",
+    },
+  });
 
-const mailGenerator = new Mailgen({
-  theme: 'default',
-  product: {
-    name: 'Zoro Services & Solutions',
-    link: process.env.CLIENT_URL,
-  },
-});
+  const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent);
+  const emailHtml = mailGenerator.generate(options.mailgenContent);
 
-const sendEmail = async ({ email, subject, mailgenContent }) => {
+  const transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
+    auth: {
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+  });
+
+  const mail = {
+    from: "no-reply@zoro-services.com",
+    to: options.email,
+    subject: options.subject,
+    text: emailTextual,
+    html: emailHtml,
+  };
+
   try {
-    const emailBody = mailGenerator.generate(mailgenContent);
-    const emailText = mailGenerator.generatePlaintext(mailgenContent);
-
-    const mail = {
-      from: process.env.EMAIL_FROM || 'no-reply@zoro-services.com',
-      to: email,
-      subject,
-      html: emailBody,
-      text: emailText,
-    };
-
     await transporter.sendMail(mail);
+    console.log(`Email sent to ${options.email}`);
   } catch (error) {
-    throw new Error(`Failed to send email: ${error.message}`);
+    console.error(
+      "Email service failed. Ensure EMAIL_HOST, EMAIL_PORT, EMAIL_USERNAME, and EMAIL_PASSWORD are set in .env",
+      error
+    );
+    throw error; // Re-throw to handle in calling function
   }
 };
 
-const emailVerificationMailgenContent = (username, verificationLink) => {
+const emailVerificationMailgenContent = (username, verificationUrl) => {
   return {
     body: {
       name: username,
-      intro: 'Please verify your email address to complete your registration.',
+      intro: "Welcome to Zoro! We're very excited to have you on board.",
       action: {
-        instructions: 'Click the button below to verify your email:',
+        instructions: "To verify your email, please click the following button:",
         button: {
-          color: '#22BC66',
-          text: 'Verify Email',
-          link: verificationLink,
+          color: "#22BC66",
+          text: "Verify your email",
+          link: verificationUrl,
         },
       },
-      outro: 'If you did not request this, please ignore this email.',
+      outro: "Need help? Reply to this email, we'd love to assist.",
     },
   };
 };
 
-const forgotPasswordMailgenContent = (username, resetLink) => {
+const forgotPasswordMailgenContent = (username, passwordResetUrl) => {
   return {
     body: {
       name: username,
-      intro: 'You have requested to reset your password.',
+      intro: "We received a request to reset your password.",
       action: {
-        instructions: 'Click the button below to reset your password:',
+        instructions: "To reset your password, click the following button:",
         button: {
-          color: '#DC4D2F',
-          text: 'Reset Password',
-          link: resetLink,
+          color: "#22BC66",
+          text: "Reset password",
+          link: passwordResetUrl,
         },
       },
-      outro: 'If you did not request a password reset, please ignore this email.',
+      outro: "Need help? Reply to this email, we'd love to assist.",
     },
   };
 };
 
-export { sendEmail, emailVerificationMailgenContent, forgotPasswordMailgenContent };
+export {
+  emailVerificationMailgenContent,
+  forgotPasswordMailgenContent,
+  sendEmail,
+};

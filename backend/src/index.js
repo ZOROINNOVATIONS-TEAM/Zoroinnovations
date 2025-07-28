@@ -1,10 +1,28 @@
-// src/index.js
 import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 import app from './app.js';
 import { connectDB } from './db/db.js';
 
+// Resolve the path to .env file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const envPath = join(__dirname, '../.env');
+
 // Load environment variables
-dotenv.config({ path: './.env' });
+const result = dotenv.config({ path: envPath });
+if (result.error) {
+  console.error('Error loading .env file:', result.error.message);
+  process.exit(1);
+}
+
+// Debug: Log loaded environment variables
+console.log('Loaded environment variables:', {
+  PORT: process.env.PORT,
+  CLIENT_URL: process.env.CLIENT_URL,
+  MONGO_URI: process.env.MONGO_URI ? '[REDACTED]' : undefined,
+  NODE_ENV: process.env.NODE_ENV,
+});
 
 // Validate critical environment variables
 const requiredEnvVars = ['MONGO_URI', 'PORT', 'CLIENT_URL'];

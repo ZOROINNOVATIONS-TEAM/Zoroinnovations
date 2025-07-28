@@ -1,44 +1,21 @@
-// src/routes/service.routes.js
-import { Router } from "express";
+import { Router } from 'express';
 import {
   createService,
+  getAllServices,
   getServiceById,
-  getServices,
   updateService,
   deleteService,
-} from "../controllers/service.controller.js";
-import {
-  createServiceValidator,
-  updateServiceValidator,
-  serviceIdValidator,
-} from "../validators/service.validators.js";
-import { authMiddleware, checkAdminRole } from "../middlewares/auth.middleware.js";
+} from '../controllers/service.controller.js';
+import { authMiddleware } from '../middlewares/auth.middleware.js';
 
 const router = Router();
 
-// Public Endpoints
-router.route("/").get(getServices);
-router.route("/:id").get(serviceIdValidator(), getServiceById);
-
-// Protected Endpoints (Admin Only)
-router.route("/").post(
-  authMiddleware,
-  checkAdminRole,
-  createServiceValidator(),
-  createService
-);
-router.route("/:id").patch(
-  authMiddleware,
-  checkAdminRole,
-  serviceIdValidator(),
-  updateServiceValidator(),
-  updateService
-);
-router.route("/:id").delete(
-  authMiddleware,
-  checkAdminRole,
-  serviceIdValidator(),
-  deleteService
-);
+router.route('/')
+  .post(authMiddleware, createService)
+  .get(getAllServices);
+router.route('/:id')
+  .get(getServiceById)
+  .patch(authMiddleware, updateService)
+  .delete(authMiddleware, deleteService);
 
 export default router;

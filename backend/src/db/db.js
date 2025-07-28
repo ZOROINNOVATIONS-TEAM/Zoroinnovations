@@ -1,4 +1,3 @@
-// src/db/db.js
 import mongoose from 'mongoose';
 import retry from 'async-retry';
 
