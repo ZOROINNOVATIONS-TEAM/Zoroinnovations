@@ -42,3 +42,19 @@
   border-bottom: 2px solid #f97316;
   padding-bottom: 1px;
 }
+
+/* Navigation link styles */
+.nav-links li a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #f97316;
+}
+
+.logo a {
+  text-decoration: none;
+  display: block;
+}

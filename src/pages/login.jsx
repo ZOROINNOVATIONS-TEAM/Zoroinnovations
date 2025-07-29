@@ -1,7 +1,7 @@
 import React from 'react';
-import LoginArt from '../components/LoginArt';
-import LoginForm from '../components/LoginForm';
-import Footer from '../components/Footer';
+import LoginArt from '../components/loginPage/LoginArt';
+import LoginForm from '../components/loginPage/LoginForm';
+import Footer from '../components/loginPage/LoginFooter';
 
 const Login = () => {
   return (
