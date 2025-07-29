@@ -1,7 +1,5 @@
-// src/pages/Careers.jsx
 import React from "react";
-// import { FaSearch } from "react-icons/fa";
-import search from "../assets/searchLogo.png"; // Assuming you have a search icon in your assets
+import search from "../assets/searchLogo.png"; 
 
 const jobs = [
   {
@@ -54,7 +52,6 @@ const Careers = () => {
         <div className="flex items-center gap-3 my-8">
           <div className="flex w-full bg-white rounded-lg overflow-hidden">
             <button className="px-1 text-gray-700">
-              {/* <FaSearch /> */}
               <img src={search} alt="" className="w-10 px-2" />
             </button>
             <input
