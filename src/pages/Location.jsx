@@ -88,6 +88,8 @@ const LocationsPage = () => {
       <div className="w-full max-w-6xl bg-white rounded-xl shadow-xl p-6 space-y-10">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-800">Locations</h1>
+         
+            <button className="bg-[#ff6531] text-white px-5 py-2 rounded text-sm font-medium">add Location</button>
         </div>
 
         <input

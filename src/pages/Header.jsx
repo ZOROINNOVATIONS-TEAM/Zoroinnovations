@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react'; // For hamburger icons
+import { NavLink } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import logo from '/zoro.png';
 import img2 from '/img2.png';
 
 const navItems = [
-  'Dashboard',
-  'Career',
-  'Team',
-  'Blog',
-  'Verify ID',
-  'Location',
-  'Projects',
-  'Contacts'
+  { name: 'Dashboard', path: '/' },
+  { name: 'Career', path: '/career' },
+  { name: 'Team', path: '/team' },
+  { name: 'Blog', path: '/blog' },
+  { name: 'Verify ID', path: '/verify' },
+  { name: 'Location', path: '/location' },
+  { name: 'Projects', path: '/projects' },
+  { name: 'Contacts', path: '/contacts' }
 ];
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const linkClasses = ({ isActive }) =>
+    `cursor-pointer transition font-semibold text-sm ${
+      isActive ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'
+    }`;
 
   return (
     <nav className="w-full bg-white fixed top-0 left-0 shadow-md z-50">
@@ -25,22 +31,17 @@ const Header = () => {
           <img src={logo} alt="Zoro Innovations Logo" className="w-20 h-8 object-contain" />
         </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6 text-sm text-gray-700 font-semibold">
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
-            <div
-              key={item}
-              className={`cursor-pointer hover:text-orange-500 transition ${
-                item === 'Verify ID' ? 'text-orange-500' : ''
-              }`}
-            >
-              {item}
-            </div>
+            <NavLink key={item.name} to={item.path} className={linkClasses}>
+              {item.name}
+            </NavLink>
           ))}
           <img src={img2} alt="User" className="w-10 h-10 rounded-full object-cover" />
         </div>
 
-        {/* Mobile Toggle Button */}
+        {/* Mobile Toggle */}
         <div className="md:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Menu">
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -50,16 +51,16 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white px-4 py-3 space-y-2 text-gray-700 text-sm font-semibold shadow-md">
+        <div className="md:hidden bg-white px-4 py-3 space-y-2 text-sm font-semibold shadow-md">
           {navItems.map((item) => (
-            <div
-              key={item}
-              className={`cursor-pointer py-2 px-2 hover:bg-gray-100 rounded ${
-                item === 'Verify ID' ? 'text-orange-500' : ''
-              }`}
+            <NavLink
+              key={item.name}
+              to={item.path}
+              className={linkClasses}
+              onClick={() => setMenuOpen(false)}
             >
-              {item}
-            </div>
+              <div className="py-2 px-2 rounded">{item.name}</div>
+            </NavLink>
           ))}
           <div className="flex justify-center mt-3">
             <img src={img2} alt="User" className="w-10 h-10 rounded-full object-cover" />
