@@ -1,3 +1,6 @@
+
+@import "tailwindcss";
+=======
 .App {
   text-align: center;
 }
@@ -48,3 +51,4 @@ input[type="password"]::-webkit-input-clear-button,
 input[type="password"]::-webkit-input-password-toggle-button {
   display: none !important;
 }
+
