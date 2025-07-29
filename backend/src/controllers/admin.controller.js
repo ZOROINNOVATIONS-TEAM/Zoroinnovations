@@ -248,3 +248,54 @@ export const getJobAnalytics = async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
+
+
+// Search Job Listing
+export const searchAdminJobs = async (req, res) => {
+  try {
+    const { title, department, city, state, country, isActive, startDate, endDate } = req.query;
+
+    const query = {};
+
+    if (title) {
+      query.title = { $regex: title, $options: "i" };
+    }
+
+    if (department) {
+      query.department = department;
+    }
+
+    if (city) {
+      query["location.city"] = { $regex: city, $options: "i" };
+    }
+
+    if (state) {
+      query["location.state"] = { $regex: state, $options: "i" };
+    }
+
+    if (country) {
+      query["location.country"] = { $regex: country, $options: "i" };
+    }
+
+    if (isActive !== undefined) {
+      query.isActive = isActive === "true";
+    }
+
+    if (startDate || endDate) {
+      query.createdAt = {};
+      if (startDate) query.createdAt.$gte = new Date(startDate);
+      if (endDate) query.createdAt.$lte = new Date(endDate);
+    }
+
+    const jobs = await JobOpportunity.find(query).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: jobs.length,
+      data: jobs,
+    });
+  } catch (error) {
+    console.error("Admin job search error:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};

@@ -9,6 +9,7 @@ import {
   getApplicationById,
   getApplicationsForJob,
   getJobAnalytics,
+  searchAdminJobs,
   toggleFeaturedStatus,
   toggleJobStatus,
   updateApplicationStatus,
@@ -26,6 +27,9 @@ router.get('/jobs', getAllJobs);
 router.patch('/jobs/:id/toggle-status', toggleJobStatus);
 router.patch('/jobs/:id/toggle-featured', toggleFeaturedStatus);
 router.get('/jobs/analytics', getJobAnalytics);
+
+//Job Listing Search
+router.get('/jobs/search', searchAdminJobs);
 
 // Applications
 router.get('/jobs/:id/applications', getApplicationsForJob);

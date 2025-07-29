@@ -16,7 +16,7 @@ const router = express.Router();
 router.get('/jobs', getAllJobs);
 router.get('/jobs/:id', getJobById);
 router.get('/jobs/slug/:slug', getJobBySlug);
-router.get('/jobs/category/:category', getJobsByCategory);
+router.get('/jobs/category/:category', getJobsByCategory); //department
 router.get('/jobs/search', searchJobs);
 
 // Apply
