@@ -1,9 +1,9 @@
 import React from 'react';
 import './index.css'
-import Navbar from './component/Navbar';
-import Header from './component/Header';
-import HeroSection from './component/HeroSection';
-import Footer from './component/Footer';
+import Navbar from './components/homePage/Navbar';
+import Header from './components/homePage/Header';
+import HeroSection from './components/homePage/HeroSection';
+import Footer from './components/homePage/Footer';
 import Login from './pages/login';
 
 function App() {
