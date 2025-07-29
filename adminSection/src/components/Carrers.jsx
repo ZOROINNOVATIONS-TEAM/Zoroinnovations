@@ -155,7 +155,7 @@ const Careers = () => {
           </div>
         </div>
         <div className="flex justify-end">
-          <button className="bg-white text-orange-600 font-bold px-5 py-2 rounded-full hover:bg-orange-600">
+          <button className="bg-white text-orange-600 font-bold px-5 py-2 rounded-full hover:bg-orange-600 hover:text-white transition-colors">
             Create New Job
           </button>
         </div>
