@@ -4,14 +4,14 @@ import authRoutes from './routes/auth.routes.js';
 import contactRoutes from './routes/contact.routes.js';
 import serviceRoutes from './routes/service.routes.js';
 import dotenv from 'dotenv';
-import cookieParser from 'cookie-parser'; // ✅ Import added
+import cookieParser from 'cookie-parser'; //
 
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
-app.use(cookieParser()); // ✅ Middleware added to parse cookies
+app.use(cookieParser()); //
 
 // Connect to MongoDB
 connectDB();
