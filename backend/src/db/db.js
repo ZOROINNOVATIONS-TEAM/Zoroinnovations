@@ -1,20 +1,15 @@
+// src/db/db.js
 import mongoose from 'mongoose';
-import retry from 'async-retry';
 
 export const connectDB = async () => {
   try {
-    await retry(
-      async () => {
-        await mongoose.connect(process.env.MONGO_URI, {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-          serverSelectionTimeoutMS: 5000,
-        });
-        console.log('MongoDB connected successfully');
-      },
-      { retries: 3, minTimeout: 1000 }
-    );
+    await mongoose.connect(process.env.MONGO_URI, {
+      connectTimeoutMS: 10000, // Timeout after 10s
+      serverSelectionTimeoutMS: 10000, // Timeout for server selection
+    });
+    console.log('MongoDB connected');
   } catch (error) {
-    throw new Error(`MongoDB connection failed: ${error.message}`);
+    console.error('MongoDB connection error:', error.message);
+    process.exit(1);
   }
 };

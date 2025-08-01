@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router } from 'express';
 import {
   changeCurrentPassword,
   forgotPasswordRequest,
@@ -10,7 +10,7 @@ import {
   resendEmailVerification,
   resetForgottenPassword,
   verifyEmail,
-} from "../controllers/auth.controller.js";
+} from '../controllers/auth.controller.js';
 import {
   resendEmailValidator,
   userChangeCurrentPasswordValidator,
@@ -18,38 +18,24 @@ import {
   userLoginValidator,
   userRegisterValidator,
   userResetForgottenPasswordValidator,
-} from "../validators/auth.validators.js";
+} from '../validators/auth.validators.js';
 import {
   authMiddleware,
   refreshAccessTokenMiddleware,
-} from "../middlewares/auth.middleware.js";
+} from '../middlewares/auth.middleware.js';
+import { validate } from '../middlewares/validate.js';
 
 const router = Router();
 
-router.route("/register").post(userRegisterValidator(), registerUser);
-
-router.route("/verify/:token").post(verifyEmail);
-router.route("/login").post(userLoginValidator(), loginUser);
-router.route("/logout").post(authMiddleware, logoutUser);
-router.route("/profile").get(authMiddleware, getCurrentUser);
-router
-  .route("/refreshAccessToken")
-  .get(refreshAccessTokenMiddleware, refreshAccessToken);
-router.route("/resendEmail").post(resendEmailValidator(), resendEmailVerification);
-router
-  .route("/forgotPasswordRequest")
-  .post(userForgotPasswordValidator(), forgotPasswordRequest);
-
-router
-  .route("/resetForgottenPassword/:token")
-  .post(userResetForgottenPasswordValidator(), resetForgottenPassword);
-
-router
-  .route("/changeCurrentPassword")
-  .post(
-    userChangeCurrentPasswordValidator(),
-    authMiddleware,
-    changeCurrentPassword
-  );
+router.route('/register').post(userRegisterValidator(), validate, registerUser);
+router.route('/verify/:token').post(validate, verifyEmail);
+router.route('/login').post(userLoginValidator(), validate, loginUser);
+router.route('/logout').post(authMiddleware, validate, logoutUser);
+router.route('/profile').get(authMiddleware, getCurrentUser);
+router.route('/refreshAccessToken').get(refreshAccessTokenMiddleware, validate, refreshAccessToken);
+router.route('/resendEmail').post(resendEmailValidator(), validate, resendEmailVerification);
+router.route('/forgotPasswordRequest').post(userForgotPasswordValidator(), validate, forgotPasswordRequest);
+router.route('/resetForgottenPassword/:token').post(userResetForgottenPasswordValidator(), validate, resetForgottenPassword);
+router.route('/changeCurrentPassword').post(userChangeCurrentPasswordValidator(), validate, authMiddleware, changeCurrentPassword);
 
 export default router;

@@ -1,88 +1,57 @@
-import Mailgen from "mailgen";
-import nodemailer from "nodemailer";
+import nodemailer from 'nodemailer';
+import Mailgen from 'mailgen';
 
-/**
- * @param {{email: string; subject: string; mailgenContent: Mailgen.Content; }} options
- */
-const sendEmail = async (options) => {
+export const emailVerificationMailgenContent = (username, verificationUrl) => {
   const mailGenerator = new Mailgen({
-    theme: "default",
-    product: {
-      name: "Zoro Innovations",
-      link: process.env.CLIENT_URL || "http://localhost:3000",
+    theme: 'default',
+    product: { name: 'Your App', link: process.env.CLIENT_URL || 'http://localhost:3000' },
+  });
+  return mailGenerator.generate({
+    body: {
+      name: username,
+      intro: 'Please verify your email address.',
+      action: {
+        instructions: 'Click the button below to verify your email:',
+        button: { color: '#22BC66', text: 'Verify Email', link: verificationUrl },
+      },
     },
   });
+};
 
-  const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent);
-  const emailHtml = mailGenerator.generate(options.mailgenContent);
+export const forgotPasswordMailgenContent = (username, resetUrl) => {
+  const mailGenerator = new Mailgen({
+    theme: 'default',
+    product: { name: 'Your App', link: process.env.CLIENT_URL || 'http://localhost:3000' },
+  });
+  return mailGenerator.generate({
+    body: {
+      name: username,
+      intro: 'You requested a password reset.',
+      action: {
+        instructions: 'Click the button below to reset your password:',
+        button: { color: '#DC4D2F', text: 'Reset Password', link: resetUrl },
+      },
+    },
+  });
+};
 
+export const sendEmail = async ({ email, subject, mailgenContent }) => {
   const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    secure: process.env.SMTP_PORT === '465',
     auth: {
-      user: process.env.EMAIL_USERNAME,
-      pass: process.env.EMAIL_PASSWORD,
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
     },
   });
 
-  const mail = {
-    from: "no-reply@zoro-services.com",
-    to: options.email,
-    subject: options.subject,
-    text: emailTextual,
-    html: emailHtml,
+  const mailOptions = {
+    from: `"Your App" <${process.env.SMTP_USER}>`,
+    to: email,
+    subject,
+    html: mailgenContent,
   };
 
-  try {
-    await transporter.sendMail(mail);
-    console.log(`Email sent to ${options.email}`);
-  } catch (error) {
-    console.error(
-      "Email service failed. Ensure EMAIL_HOST, EMAIL_PORT, EMAIL_USERNAME, and EMAIL_PASSWORD are set in .env",
-      error
-    );
-    throw error; // Re-throw to handle in calling function
-  }
-};
-
-const emailVerificationMailgenContent = (username, verificationUrl) => {
-  return {
-    body: {
-      name: username,
-      intro: "Welcome to Zoro! We're very excited to have you on board.",
-      action: {
-        instructions: "To verify your email, please click the following button:",
-        button: {
-          color: "#22BC66",
-          text: "Verify your email",
-          link: verificationUrl,
-        },
-      },
-      outro: "Need help? Reply to this email, we'd love to assist.",
-    },
-  };
-};
-
-const forgotPasswordMailgenContent = (username, passwordResetUrl) => {
-  return {
-    body: {
-      name: username,
-      intro: "We received a request to reset your password.",
-      action: {
-        instructions: "To reset your password, click the following button:",
-        button: {
-          color: "#22BC66",
-          text: "Reset password",
-          link: passwordResetUrl,
-        },
-      },
-      outro: "Need help? Reply to this email, we'd love to assist.",
-    },
-  };
-};
-
-export {
-  emailVerificationMailgenContent,
-  forgotPasswordMailgenContent,
-  sendEmail,
+  await transporter.sendMail(mailOptions);
 };
