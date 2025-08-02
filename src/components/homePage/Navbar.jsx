@@ -12,14 +12,10 @@ const Navbar = () => {
         </Link>
       </div>
       <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li>Services</li>
-        <li>About</li>
-        <li>Projects</li>
-        <li>Blog</li>
-        <li className="active">Careers</li>
-        <li>Contact</li>
-        <li><Link to="/login" style={{ color: '#007bff', fontWeight: 'bold' }}>Login</Link></li>
+        <li><Link to="/">Login</Link></li>
+        <li><Link to="/landing">Landing</Link></li>
+        <li><Link to="/verify">Verify ID</Link></li>
+        <li><Link to="/location">Location</Link></li>
       </ul>
     </nav>
   );

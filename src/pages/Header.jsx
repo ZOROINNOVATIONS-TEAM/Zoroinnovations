@@ -5,14 +5,10 @@ import logo from '/zoro.png';
 import img2 from '/img2.png';
 
 const navItems = [
-  { name: 'Dashboard', path: '/' },
-  { name: 'Career', path: '/career' },
-  { name: 'Team', path: '/team' },
-  { name: 'Blog', path: '/blog' },
+  { name: 'Login', path: '/' },
+  { name: 'Landing', path: '/landing' },
   { name: 'Verify ID', path: '/verify' },
-  { name: 'Location', path: '/location' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Contacts', path: '/contacts' }
+  { name: 'Location', path: '/location' }
 ];
 
 const Header = () => {
