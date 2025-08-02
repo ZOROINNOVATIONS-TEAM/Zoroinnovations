@@ -7,6 +7,7 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import Footer from '../components/loginPage/LoginFooter';
 
 // Fix default marker icons
 delete L.Icon.Default.prototype._getIconUrl;
@@ -118,8 +119,9 @@ const LocationsPage = () => {
   };
 
   return (
-    <div className="min-h-screen py-10 mt-15 px-4 bg-gradient-to-br from-blue-900 via-indigo-600 to-orange-500 flex justify-center items-center">
-      <div className="w-full max-w-6xl bg-white rounded-xl shadow-xl p-6 space-y-10">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-900 via-indigo-600 to-orange-500">
+      <div className="flex-1 py-10 px-4 flex justify-center items-center">
+        <div className="w-full max-w-6xl bg-white rounded-xl shadow-xl p-6 space-y-10">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-800">Locations</h1>
          
@@ -329,6 +331,8 @@ const LocationsPage = () => {
           </div>
         </div>
       )}
+      </div>
+      <Footer />
     </div>
   );
 };

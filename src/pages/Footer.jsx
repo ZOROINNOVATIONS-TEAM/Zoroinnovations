@@ -1,6 +1,5 @@
 import React from 'react';
 // import '../../index.css';
-import logo from '/zoro.png'
 
 const Footer = () => {
     return (
@@ -9,7 +8,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 w-full">
                    
                     <div>
-                        <img className="h-8 w-auto mb-4" src={logo} alt="Company Logo" />
+                        <img className="h-8 w-auto mb-4" src="/zoro.png" alt="Company Logo" />
                         <p className="text-base font-normal font-['Segoe_UI'] leading-normal mb-6">
                             Transforming businesses through innovative AI solutions and cutting-edge technology.
                         </p>
@@ -40,7 +39,7 @@ const Footer = () => {
                     <div>
                         <h4 className="text-white text-lg font-semibold mb-4">Company</h4>
                         <ul className="space-y-3">
-                            {['About Us', 'Our Team', 'Careers & Certs', 'Contact'].map((link, idx) => (
+                            {['About Us', 'Our Team', 'Contact'].map((link, idx) => (
                                 <li key={idx}>
                                     <a href="#" className="text-base font-normal hover:text-white transition-colors">{link}</a>
                                 </li>
