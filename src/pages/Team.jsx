@@ -1,13 +1,23 @@
 import React from 'react';
-import Footer from '../components/loginPage/LoginFooter';
+import Header from '../components/TeamPage/Header';
+import TeamMembers from '../components/TeamPage/TeamMembers';
+import EmployeeTable from '../components/TeamPage/EmployeeTable';
+import AddTeamMemberForm from '../components/TeamPage/AddTeamMemberForm';
+import Footer from '../components/TeamPage/Footer';
 
 const Team = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-900 via-indigo-600 to-orange-500">
-      <div className="flex-1 p-6">
-        <div className="bg-white rounded-xl shadow-xl p-6 max-w-6xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-800 mb-6">Team</h1>
-          <p className="text-gray-600">Meet our amazing team at Zoro Innovations</p>
+    <div className="w-full min-h-screen relative font-sans">
+      <Header />
+      <div className="pt-20 w-full bg-gradient-to-br from-blue-900 via-blue-500 to-orange-500 p-8">
+        <div className="max-w-[1440px] mx-auto">
+          <h1 className="text-3xl font-bold text-white mb-2">Team Management</h1>
+          <p className="text-white text-sm mb-8">Manage your employee profiles and bios.</p>
+          <TeamMembers />
+          <div className="bg-white rounded-xl p-8 shadow-lg mb-16">
+            <EmployeeTable />
+            <AddTeamMemberForm />
+          </div>
         </div>
       </div>
       <Footer />
@@ -15,4 +25,4 @@ const Team = () => {
   );
 };
 
-export default Team; 
+export default Team;
