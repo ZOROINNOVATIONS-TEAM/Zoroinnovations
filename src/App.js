@@ -1,16 +1,19 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './index.css'
 
-import './App.css'
-
-import Team from './pages/Team'
 
 function App() {
-  
-
   return (
-    <>
-     <Team />
-    </>
-  )
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Team />} />
+       
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
