@@ -7,16 +7,14 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import Footer from '../components/loginPage/LoginFooter';
 
 // Fix default marker icons
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
-  iconUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+  iconRetinaUrl: "/images/marker-icon-2x.png",
+  iconUrl: "/images/marker-icon.png",
+  shadowUrl: "/images/marker-shadow.png",
 });
 
 const allLocations = [
@@ -75,6 +73,17 @@ const allLocations = [
 
 const LocationsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [newLocation, setNewLocation] = useState({
+    name: "",
+    address: "",
+    city: "",
+    state: "",
+    country: "",
+    image: "/office1.png",
+    lat: "",
+    lng: ""
+  });
   const center = [22.5937, 78.9629];
 
   const filteredLocations = allLocations.filter((loc) =>
@@ -82,14 +91,46 @@ const LocationsPage = () => {
       .toLowerCase()
       .includes(searchQuery.toLowerCase())
   );
+  
+  const handleAddLocation = () => {
+    setAddModalOpen(true);
+  };
+  
+  const handleInputChange = (e) => {
+    setNewLocation({ ...newLocation, [e.target.name]: e.target.value });
+  };
+  
+  const handleSubmit = () => {
+    // In a real application, you would add this to the database
+    // For now, we'll just close the modal
+    console.log("New location to be added:", newLocation);
+    setAddModalOpen(false);
+    // Reset form
+    setNewLocation({
+      name: "",
+      address: "",
+      city: "",
+      state: "",
+      country: "",
+      image: "/office1.png",
+      lat: "",
+      lng: ""
+    });
+  };
 
   return (
-    <div className="min-h-screen py-10 mt-15 px-4 bg-gradient-to-br from-blue-900 via-indigo-600 to-orange-500 flex justify-center items-center">
-      <div className="w-full max-w-6xl bg-white rounded-xl shadow-xl p-6 space-y-10">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-900 via-indigo-600 to-orange-500">
+      <div className="flex-1 py-10 px-4 flex justify-center items-center">
+        <div className="w-full max-w-6xl bg-white rounded-xl shadow-xl p-6 space-y-10">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-800">Locations</h1>
          
-            <button className="bg-[#ff6531] text-white px-5 py-2 rounded text-sm font-medium">add Location</button>
+            <button 
+              onClick={handleAddLocation}
+              className="bg-[#ff6531] text-white px-5 py-2 rounded text-sm font-medium"
+            >
+              Add Location
+            </button>
         </div>
 
         <input
@@ -178,6 +219,120 @@ const LocationsPage = () => {
           </div>
         </div>
       </div>
+      
+      {/* Add Location Modal */}
+      {addModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md text-sm">
+            <h3 className="text-lg font-semibold mb-4">Add New Location</h3>
+            
+            <div className="space-y-3">
+              <div className="mb-3">
+                <label className="block text-xs font-medium mb-1">Office Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={newLocation.name}
+                  onChange={handleInputChange}
+                  className="w-full border px-3 py-2 rounded"
+                  placeholder="e.g. Delhi Office"
+                />
+              </div>
+              
+              <div className="mb-3">
+                <label className="block text-xs font-medium mb-1">Address</label>
+                <input
+                  type="text"
+                  name="address"
+                  value={newLocation.address}
+                  onChange={handleInputChange}
+                  className="w-full border px-3 py-2 rounded"
+                  placeholder="e.g. Connaught Place"
+                />
+              </div>
+              
+              <div className="mb-3">
+                <label className="block text-xs font-medium mb-1">City</label>
+                <input
+                  type="text"
+                  name="city"
+                  value={newLocation.city}
+                  onChange={handleInputChange}
+                  className="w-full border px-3 py-2 rounded"
+                  placeholder="e.g. Delhi"
+                />
+              </div>
+              
+              <div className="mb-3">
+                <label className="block text-xs font-medium mb-1">State</label>
+                <input
+                  type="text"
+                  name="state"
+                  value={newLocation.state}
+                  onChange={handleInputChange}
+                  className="w-full border px-3 py-2 rounded"
+                  placeholder="e.g. Delhi"
+                />
+              </div>
+              
+              <div className="mb-3">
+                <label className="block text-xs font-medium mb-1">Country</label>
+                <input
+                  type="text"
+                  name="country"
+                  value={newLocation.country}
+                  onChange={handleInputChange}
+                  className="w-full border px-3 py-2 rounded"
+                  placeholder="e.g. India"
+                />
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <div className="mb-3">
+                  <label className="block text-xs font-medium mb-1">Latitude</label>
+                  <input
+                    type="text"
+                    name="lat"
+                    value={newLocation.lat}
+                    onChange={handleInputChange}
+                    className="w-full border px-3 py-2 rounded"
+                    placeholder="e.g. 28.6139"
+                  />
+                </div>
+                
+                <div className="mb-3">
+                  <label className="block text-xs font-medium mb-1">Longitude</label>
+                  <input
+                    type="text"
+                    name="lng"
+                    value={newLocation.lng}
+                    onChange={handleInputChange}
+                    className="w-full border px-3 py-2 rounded"
+                    placeholder="e.g. 77.209"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-6 flex justify-between">
+              <button
+                onClick={handleSubmit}
+                className="bg-[#ff6531] text-white px-4 py-2 rounded cursor-pointer"
+              >
+                Add Location
+              </button>
+              <button
+                onClick={() => setAddModalOpen(false)}
+                className="bg-gray-300 px-4 py-2 rounded cursor-pointer"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      </div>
+      <Footer />
     </div>
   );
 };
