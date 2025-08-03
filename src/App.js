@@ -1,14 +1,14 @@
 
 import './App.css'
 
-import TeamPage from './pages/Team'
+import Team from './pages/Team'
 
 function App() {
   
 
   return (
     <>
-     <TeamPage />
+     <Team />
     </>
   )
 }
