@@ -7,6 +7,7 @@ import LandingPage from './pages/LandingPage';
 import EmployeeVer from './pages/EmployeeVer';
 import Locations from './pages/Location';
 import Team from './pages/Team';
+import Blog from './pages/Blog';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/verify" element={<EmployeeVer />} />
           <Route path="/location" element={<Locations />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </div>
     </Router>
