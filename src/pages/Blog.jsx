@@ -16,7 +16,7 @@ import icon18 from '../assets/BlogPost/icon18.png';
 import icon19 from '../assets/BlogPost/icon19.png';
 
 
-const BlogPost = () => {
+const Blog = () => {
   // Icon list for mapping
   const editorIcons = [icon11, icon12, icon13, icon14, icon15, icon16, icon17, icon18, icon19];
 
@@ -128,4 +128,4 @@ const BlogPost = () => {
   );
 };
 
-export default BlogPost;
+export default Blog;

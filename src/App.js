@@ -1,14 +1,21 @@
 
-import './App.css'
-import BlogPost from './pages/BlogPost'
-function App() {
-  
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './index.css';
 
+import Blog from './pages/Blog';
+
+
+function App() {
   return (
-    <>
-     <BlogPost />
-    </>
-  )
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/blog" element={<Blog />} />
+         
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
