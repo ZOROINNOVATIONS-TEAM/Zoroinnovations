@@ -1,8 +1,8 @@
 import React from 'react'
 // import Navbar from '../components/Navbar'
 // import Footer from '../components/Footer'
-import DashboardCard from '../components/DashboardCard'
-import LineGraph from '../components/LineGraph'
+import DashboardCard from '../components/Dashboard-Career/DashboardCard'
+import LineGraph from '../components/Dashboard-Career/LineGraph'
 
 const Dashboard = () => {
   return (

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Careers from './pages/Carrers';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/Dashboard-Career/Navbar';
+import Footer from './components/Dashboard-Career/Footer';
 
 function App() {
   return (

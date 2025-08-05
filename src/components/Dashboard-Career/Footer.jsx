@@ -1,9 +1,9 @@
 import React from "react";
-// import { FaLinkedinIn, FaFacebookF, FaTwitter } from "react-icons/fa";
-import logo from "../assets/zoro-logo.png";
-import linkedInLogo from "../assets/linkedin.svg";
-import twitterLogo from "../assets/twitter.svg";
-import facebookLogo from "../assets/facebook.svg";
+
+import logo from "../../assets/Dashboard-Career/zoro-logo.png";
+import linkedInLogo from "../../assets/Dashboard-Career/linkedin.svg";
+import twitterLogo from "../../assets/Dashboard-Career/twitter.svg";
+import facebookLogo from "../../assets/Dashboard-Career/facebook.svg";
 
 const Footer = () => {
   return (

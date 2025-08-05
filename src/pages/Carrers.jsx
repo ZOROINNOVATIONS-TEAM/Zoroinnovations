@@ -1,5 +1,5 @@
 import React from "react";
-import search from "../assets/searchLogo.png"; 
+import search from "../assets/Dashboard-Career/searchLogo.png"; 
 
 const jobs = [
   {

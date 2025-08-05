@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../assets/zoro-logo.png'
-import profilePic from '../assets/profilePic.png'
+import logo from '../../assets/Dashboard-Career/zoro-logo.png'
+import profilePic from '../../assets/Dashboard-Career/profilePic.png'
 
 const Navbar = () => {
   const location = useLocation();
