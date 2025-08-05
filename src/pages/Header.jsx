@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import logo from '/zoro.png';
-import img2 from '/img2.png';
 
 const navItems = [
-  { name: 'Dashboard', path: '/' },
+  { name: 'Dashboard', path: '/dashboard' },
   { name: 'Career', path: '/career' },
   { name: 'Team', path: '/team' },
   { name: 'Blog', path: '/blog' },
   { name: 'Verify ID', path: '/verify' },
   { name: 'Location', path: '/location' },
   { name: 'Projects', path: '/projects' },
-  { name: 'Contacts', path: '/contacts' }
+  { name: 'Contacts or Inquiries', path: '/contacts' }
 ];
 
 const Header = () => {
@@ -28,7 +25,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex-shrink-0">
-          <img src={logo} alt="Zoro Innovations Logo" className="w-20 h-8 object-contain" />
+          <img src="/zoro.png" alt="Zoro Innovations Logo" className="w-20 h-8 object-contain" />
         </div>
 
         {/* Desktop Nav */}
@@ -38,13 +35,13 @@ const Header = () => {
               {item.name}
             </NavLink>
           ))}
-          <img src={img2} alt="User" className="w-10 h-10 rounded-full object-cover" />
+          <img src="/img2.png" alt="User" className="w-10 h-10 rounded-full object-cover" />
         </div>
 
         {/* Mobile Toggle */}
         <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Menu">
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Menu" className="text-gray-700">
+            {menuOpen ? '✕' : '☰'}
           </button>
         </div>
       </div>
@@ -63,7 +60,7 @@ const Header = () => {
             </NavLink>
           ))}
           <div className="flex justify-center mt-3">
-            <img src={img2} alt="User" className="w-10 h-10 rounded-full object-cover" />
+            <img src="/img2.png" alt="User" className="w-10 h-10 rounded-full object-cover" />
           </div>
         </div>
       )}
