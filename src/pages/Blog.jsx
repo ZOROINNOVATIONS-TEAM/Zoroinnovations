@@ -1,6 +1,9 @@
 import React from 'react';
 import img1 from '../assets/BlogPost/img.png';
+<<<<<<< HEAD
 import Header from '../components/BlogPost/Header.jsx';
+=======
+>>>>>>> 16c8249198ddc729eaadf37fd84e9fdf93b92094
 import Footer from '../components/BlogPost/Footer.jsx';
 
 // Importing all your icons
@@ -20,7 +23,10 @@ const Blog = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <Header />
+=======
+>>>>>>> 16c8249198ddc729eaadf37fd84e9fdf93b92094
       <div className="min-h-screen mt-10 w-full bg-gradient-to-br from-blue-900 via-blue-500 to-orange-500 py-12 px-6">
         <div className="w-5/6 mx-auto bg-white rounded-xl p-10 shadow-lg flex flex-col lg:flex-row gap-8">
 
