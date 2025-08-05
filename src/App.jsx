@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import EmployeeVer from './pages/EmployeeVer.jsx';
 import Locations from './pages/Location.jsx';
@@ -11,16 +11,19 @@ import Blog from './pages/Blog.jsx';
 import Projects from './pages/Projects.jsx';
 import Contacts from './pages/Contacts.jsx';
 import Header from './pages/Header.jsx';
+import Navbar from './components/Dashboard-Career/Navbar.jsx';
+import Footer from './components/Dashboard-Career/Footer.jsx';
 
-function App() {
+function AppContent() {
   const location = useLocation();
 
-  // Pages that should not have header and footer
+  // Pages that should not have header/navbar/footer
   const noHeaderFooterPages = ['/', '/landing'];
   const shouldShowHeaderFooter = !noHeaderFooterPages.includes(location.pathname);
 
   return (
     <>
+      {shouldShowHeaderFooter && <Navbar />}
       {shouldShowHeaderFooter && <Header />}
       <div className={shouldShowHeaderFooter ? "pt-16" : ""}>
         <Routes>
@@ -36,7 +39,16 @@ function App() {
           <Route path="/contacts" element={<Contacts />} />
         </Routes>
       </div>
+      {shouldShowHeaderFooter && <Footer />}
     </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

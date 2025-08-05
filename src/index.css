@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap');
 
+@import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'TikTok Sans', 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   background-color: #fff;
   color: #222;
