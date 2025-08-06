@@ -7,12 +7,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-900 via-indigo-600 to-orange-500 text-white">
       <main className="flex-grow p-6">
-        <div className="bg-white text-gray-900 rounded-xl shadow-xl p-6 max-w-6xl mx-auto">
-          <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
-          <p className="text-md text-gray-600 mb-6">
-            Welcome to the Zoro Innovations Dashboard. Here's an overview of your system performance.
-          </p>
-
+       
           {/* Top Stats */}
           <div className="flex flex-row gap-8 my-12">
             <DashboardCard title="Total Projects" value="25" />
@@ -59,7 +54,6 @@ const Dashboard = () => {
                 <LineGraph />
               </div>
             </div>
-          </div>
         </div>
       </main>
 
