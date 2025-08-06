@@ -41,9 +41,13 @@ const jobs = [
 
 const Careers = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1d3ede] via-[#3689f8] to-[#fa7755] py-12 px-18 text-white">
+        <div className="min-h-screen mt-10 w-full bg-gradient-to-br from-blue-900 via-blue-500 to-orange-500 py-12 px-6">
         {/* Header */}
-        <h1 className="text-3xl font-bold">Job Postings</h1>
+ <h1 className="text-3xl font-bold text-white" style={{ fontFamily: "'Times New Roman', serif" }}>
+  Job Postings
+</h1>
+
+
         <p className="text-md text-white my-2">
           Manage current job openings and create new ones.
         </p>
