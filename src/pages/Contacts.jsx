@@ -10,7 +10,6 @@ const Contacts = () => {
           <p className="text-gray-600">Get in touch with us for any inquiries</p>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

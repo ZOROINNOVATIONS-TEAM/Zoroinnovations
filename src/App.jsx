@@ -23,7 +23,7 @@ function AppContent() {
 
   return (
     <>
-      {shouldShowHeaderFooter && <Navbar />}
+      {/* {shouldShowHeaderFooter && <Navbar />} */}
       {shouldShowHeaderFooter && <Header />}
       <div className={shouldShowHeaderFooter ? "pt-16" : ""}>
         <Routes>

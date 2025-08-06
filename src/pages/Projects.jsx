@@ -10,7 +10,7 @@ const Projects = () => {
           <p className="text-gray-600">Explore our innovative projects and solutions</p>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

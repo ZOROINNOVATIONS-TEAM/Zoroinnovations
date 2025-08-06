@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import employeeData from "../Data/employeeData";
-import Footer from '../components/loginPage/LoginFooter';
+// import Footer from '../components/loginPage/LoginFooter';
 
 export default function EmployeeVer() {
   const navigate = useNavigate();
@@ -226,7 +226,7 @@ export default function EmployeeVer() {
         </div>
       )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

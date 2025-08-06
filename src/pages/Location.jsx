@@ -332,7 +332,7 @@ const LocationsPage = () => {
         </div>
       )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
