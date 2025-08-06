@@ -119,7 +119,7 @@ const LocationsPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-900 via-indigo-600 to-orange-500">
+ <div className="min-h-screen mt-10 w-full bg-gradient-to-br from-blue-900 via-blue-500 to-orange-500 py-12 px-6">
       <div className="flex-1 py-10 px-4 flex justify-center items-center">
         <div className="w-full max-w-6xl bg-white rounded-xl shadow-xl p-6 space-y-10">
         <div className="flex justify-between items-center">
