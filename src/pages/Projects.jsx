@@ -5,7 +5,7 @@ import Footer from '../components/loginPage/LoginFooter';
   {
     title: "AI-Powered Analytics Platform",
     client: "Global Retail Corp",
-    image: "/images/analytics.png",
+    image: "/ProjectImages/analytics.png",
     progress: 75,
     dueDate: "2024-08-15",
     completed: false,
@@ -13,7 +13,7 @@ import Footer from '../components/loginPage/LoginFooter';
   {
     title: "Smart Home Automation System",
     client: "Tech Startup Inc",
-    image: "/images/smart-home.png",
+    image: "/ProjectImages/smart-home.png",
     progress: 100,
     dueDate: "2024-05-20",
     completed: true,
@@ -21,7 +21,7 @@ import Footer from '../components/loginPage/LoginFooter';
   {
     title: "Predictive Maintenance Software",
     client: "Industrial Solutions Ltd",
-    image: "/images/maintainance.png",
+    image: "/ProjectImages/maintainance.png",
     progress: 25,
     dueDate: "2024-11-30",
     completed: false,
@@ -29,7 +29,7 @@ import Footer from '../components/loginPage/LoginFooter';
   {
     title: "Custom CRM Development",
     client: "Business Growth Partners",
-    image: "/images/crm.png",
+    image: "/ProjectImages/crm.png",
     progress: 60,
     dueDate: "2024-09-22",
     completed: false,
@@ -37,7 +37,7 @@ import Footer from '../components/loginPage/LoginFooter';
   {
     title: "Mobile App for Healthcare",
     client: "Health Innovations LLC",
-    image: "/images/healthcare.png",
+    image: "/ProjectImages/healthcare.png",
     progress: 100,
     dueDate: "2024-04-10",
     completed: true,
@@ -140,6 +140,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
