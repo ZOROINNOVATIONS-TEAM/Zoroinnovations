@@ -146,8 +146,6 @@ const Contacts = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };
