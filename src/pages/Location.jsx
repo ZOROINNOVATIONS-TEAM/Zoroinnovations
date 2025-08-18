@@ -8,15 +8,13 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+// import Footer from "../components/loginPage/LoginFooter";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
-  iconUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+  iconRetinaUrl: "/images/marker-icon-2x.png",
+  iconUrl: "/images/marker-icon.png",
+  shadowUrl: "/images/marker-shadow.png",
 });
 
 // Helper to re-center map
@@ -34,6 +32,7 @@ const LocationsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [locations, setLocations] = useState([]);
   const [showForm, setShowForm] = useState(false);
+
   const [newLocation, setNewLocation] = useState({
     name: "",
     address: "",
@@ -44,91 +43,82 @@ const LocationsPage = () => {
     lng: "",
   });
 
-  useEffect(() => {
-    setLocations([
-      {
-        name: "Delhi Office",
-        address: "Connaught Place",
-        city: "Delhi",
-        state: "Delhi",
-        country: "India",
-        lat: 28.6139,
-        lng: 77.209,
-      },
-      {
-        name: "Mumbai Office",
-        address: "Bandra Kurla Complex",
-        city: "Mumbai",
-        state: "Maharashtra",
-        country: "India",
-        lat: 19.076,
-        lng: 72.8777,
-      },
-    ]);
-  }, []);
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-  // 🔒 Lock scroll when modal is open
+  // Fetch locations from backend
   useEffect(() => {
-    document.body.style.overflow = showForm ? "hidden" : "auto";
-    return () => (document.body.style.overflow = "auto");
-  }, [showForm]);
+    const fetchLocations = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/location/all`);
+        if (!res.ok) throw new Error("Failed to fetch locations");
+        const data = await res.json();
+        setLocations(data);
+      } catch (err) {
+        console.error("Error fetching locations:", err);
+      }
+    };
+    fetchLocations();
+  }, [API_BASE_URL]);
 
+  // Add new location
+  const handleAddLocation = async (e) => {
+    e.preventDefault();
+    const payload = {
+      ...newLocation,
+      lat: parseFloat(newLocation.lat),
+      lng: parseFloat(newLocation.lng),
+    };
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/location/add`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error("Failed to add location");
+
+      const data = await res.json();
+      setLocations((prev) => [...prev, data]);
+      setShowForm(false);
+
+      // Reset form
+      setNewLocation({
+        name: "",
+        address: "",
+        city: "",
+        state: "",
+        country: "",
+        lat: "",
+        lng: "",
+      });
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Could not add location.");
+    }
+  };
+
+  // Filtered locations
   const filteredLocations = locations.filter((loc) =>
     `${loc.name} ${loc.address} ${loc.city} ${loc.state}`
       .toLowerCase()
       .includes(searchQuery.toLowerCase())
   );
 
+  // First map center
   const firstCoords =
     filteredLocations.length > 0
       ? [filteredLocations[0].lat, filteredLocations[0].lng]
-      : [22.5937, 78.9629];
-
- const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-const handleAddLocation = async (e) => {
-  e.preventDefault();
-  const payload = {
-    ...newLocation,
-    lat: parseFloat(newLocation.lat),
-    lng: parseFloat(newLocation.lng),
-  };
-
-  try {
-    const res = await fetch(`${API_BASE_URL}/location/add`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    if (!res.ok) throw new Error("Failed to add location");
-
-    const data = await res.json();
-    setLocations((prev) => [...prev, data]);
-    setShowForm(false);
-    setNewLocation({
-      name: "",
-      address: "",
-      city: "",
-      state: "",
-      country: "",
-      lat: "",
-      lng: "",
-    });
-  } catch (err) {
-    console.error("Error:", err);
-    alert("Could not add location.");
-  }
-};
-
+      : [22.5937, 78.9629]; // Default: India center
 
   return (
     <div className="min-h-screen mt-15 py-10 px-4 bg-gradient-to-br from-blue-900 via-indigo-600 to-orange-500 flex justify-center">
       <div className="w-full max-w-6xl bg-white rounded-xl shadow-xl p-6 space-y-10 relative">
-
         {/* Header */}
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-800">🌍 Office Locations</h1>
+          <h1 className="text-3xl font-bold text-gray-800">
+            🌍 Office Locations
+          </h1>
           <button
             onClick={() => setShowForm(true)}
             className="bg-[#ff6531] hover:bg-orange-600 cursor-pointer transition text-white px-5 py-2 rounded text-sm font-medium shadow"
@@ -214,19 +204,21 @@ const handleAddLocation = async (e) => {
             </button>
             <h2 className="text-xl font-semibold mb-4">Add New Location</h2>
             <form onSubmit={handleAddLocation} className="space-y-3">
-              {["name", "address", "city", "state", "country", "lat", "lng"].map((field) => (
-                <input
-                  key={field}
-                  type="text"
-                  required
-                  placeholder={field[0].toUpperCase() + field.slice(1)}
-                  value={newLocation[field]}
-                  onChange={(e) =>
-                    setNewLocation({ ...newLocation, [field]: e.target.value })
-                  }
-                  className="w-full p-2 rounded border border-gray-300"
-                />
-              ))}
+              {["name", "address", "city", "state", "country", "lat", "lng"].map(
+                (field) => (
+                  <input
+                    key={field}
+                    type="text"
+                    required
+                    placeholder={field[0].toUpperCase() + field.slice(1)}
+                    value={newLocation[field]}
+                    onChange={(e) =>
+                      setNewLocation({ ...newLocation, [field]: e.target.value })
+                    }
+                    className="w-full p-2 rounded border border-gray-300"
+                  />
+                )
+              )}
               <button
                 type="submit"
                 className="w-full cursor-pointer bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"

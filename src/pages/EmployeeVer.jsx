@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import employeeData from "../Data/employeeData";
+// import Footer from '../components/loginPage/LoginFooter';
 
 export default function EmployeeVer() {
+  const navigate = useNavigate();
   const [employees, setEmployees] = useState(employeeData);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [searchId, setSearchId] = useState("");
@@ -44,8 +47,9 @@ export default function EmployeeVer() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-[#0047ab] via-[#5d6bd9] to-[#ff7e5f] p-6 min-h-screen">
-      <div className="bg-white rounded-xl shadow-lg p-3 w-full max-w-6xl mx-auto text-sm mt-17">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#0047ab] via-[#5d6bd9] to-[#ff7e5f]">
+      <div className="flex-1 p-6">
+        <div className="bg-white rounded-xl shadow-lg p-3 w-full max-w-6xl mx-auto text-sm">
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold p-1">Employee Verification Records</h2>
@@ -150,7 +154,12 @@ export default function EmployeeVer() {
           <button className="bg-[#ff6531] text-white px-6 py-2 rounded text-sm font-medium">Add New Employee</button>
           <div className="flex gap-3">
             <button className="bg-[#f2f2f2] text-black px-5 py-2 rounded text-sm font-medium">New Search</button>
-            <button className="bg-[#ff6531] text-white px-5 py-2 rounded text-sm font-medium">Back to Homepage</button>
+            <button 
+              onClick={() => navigate('/landing')}
+              className="bg-[#ff6531] text-white px-5 py-2 rounded text-sm font-medium"
+            >
+              Back to Landing
+            </button>
           </div>
         </div>
       </div>
@@ -216,6 +225,8 @@ export default function EmployeeVer() {
           </div>
         </div>
       )}
+      </div>
+      {/* <Footer /> */}
     </div>
   );
 }
